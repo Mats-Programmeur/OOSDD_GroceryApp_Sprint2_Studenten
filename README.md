@@ -34,12 +34,11 @@ De opdracht is om zelfstandig de login functionaliteit te laten werken.
 
 Overzicht
 
-De OOSDD GroceryApp is een schoolproject waarin studenten samenwerken aan een boodschappenapplicatie.
-Om samenwerking soepel te laten verlopen gebruiken we GitFlow als branching-strategie.
+Ik gebruik Gitflow als branching strategie
 
 Branching-strategie
 
-We hanteren de volgende vaste branches:
+Ik hanteer de volgende vaste branches:
 
 main: bevat stabiele productiecode. Elke release wordt hier getagd.
 
@@ -53,6 +52,5 @@ release/*: voor het voorbereiden van releases (bv. release/1.0.0).
 
 hotfix/*: voor urgente bugfixes op productie (bv. hotfix/1.0.1).
 
-Zie CONTRIBUTING.md
- voor details over het gebruik van GitFlow in dit project.
+Zie CONTRIBUTING.md voor details over het gebruik van GitFlow in dit project.
  

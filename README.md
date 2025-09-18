@@ -30,5 +30,29 @@ De opdracht is om zelfstandig de login functionaliteit te laten werken.
 5. In MauiProgramm class van de Grocery.App staan de registraties van de AuthService en de LoginView in comment --> haal de // weg.  
 6. In App.xaml.cs staat /*LoginViewModel viewModel*/ haal hier /* en */ weg, zodat het LoginViewModel beschikbaar komt.  
 7. In App.xaml.cs staat //MainPage = new LoginView(viewModel); Haal hier de // weg en zet de regel erboven in commentaar, zodat AppShell wordt uitgeschakeld.  
-8. Uncomment de route naar het Login scherm in AppShell.xaml.cs: //Routing.RegisterRoute("Login", typeof(LoginView)); 
+8. Uncomment de route naar het Login scherm in AppShell.xaml.cs: //Routing.RegisterRoute("Login", typeof(LoginView));
+
+Overzicht
+
+De OOSDD GroceryApp is een schoolproject waarin studenten samenwerken aan een boodschappenapplicatie.
+Om samenwerking soepel te laten verlopen gebruiken we GitFlow als branching-strategie.
+
+Branching-strategie
+
+We hanteren de volgende vaste branches:
+
+main: bevat stabiele productiecode. Elke release wordt hier getagd.
+
+develop: bevat de laatste ontwikkelcode, basis voor nieuwe features.
+
+Daarnaast gebruiken we tijdelijke branches:
+
+feature/*: voor nieuwe functionaliteiten (bv. feature/login-form).
+
+release/*: voor het voorbereiden van releases (bv. release/1.0.0).
+
+hotfix/*: voor urgente bugfixes op productie (bv. hotfix/1.0.1).
+
+Zie CONTRIBUTING.md
+ voor details over het gebruik van GitFlow in dit project.
  

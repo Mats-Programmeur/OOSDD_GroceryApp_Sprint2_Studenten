@@ -34,6 +34,25 @@ namespace Grocery.App.ViewModels
 
         private void GetAvailableProducts()
         {
+            // Maak de lijst AvailableProducts leeg
+            AvailableProducts.Clear();
+
+            // Haal alle producten op
+            var allProducts = _productService.GetAll();
+
+            foreach (var product in allProducts)
+            {
+                // Controleer of het product al op de boodschappenlijst staat
+                bool alreadyInList = MyGroceryListItems.Any(item => item.ProductId == product.Id);
+
+                // Voeg toe als het nog niet op de lijst staat én voorraad > 0
+                if (!alreadyInList && product.Stock > 0)
+                {
+                    AvailableProducts.Add(product);
+                }
+            }
+
+
             //Maak de lijst AvailableProducts leeg
             //Haal de lijst met producten op
             //Controleer of het product al op de boodschappenlijst staat, zo niet zet het in de AvailableProducts lijst
@@ -54,6 +73,30 @@ namespace Grocery.App.ViewModels
         [RelayCommand]
         public void AddProduct(Product product)
         {
+            if (product == null || product.Id <= 0)
+                return;
+
+            // Maak een nieuw GroceryListItem aan
+            var newItem = new GroceryListItem(
+                id: 0, // nieuw item
+                groceryListId: GroceryList.Id,
+                productId: product.Id,
+                amount: 1 // standaard aantal
+            );
+
+            // Voeg het item toe via de service
+            _groceryListItemsService.Add(newItem);
+
+            // Werk de voorraad bij
+            product.Stock -= 1;
+            _productService.Update(product);
+
+            // Update de lijst met beschikbare producten
+            GetAvailableProducts();
+
+            // Trigger UI update
+            OnGroceryListChanged(GroceryList);
+
             //Controleer of het product bestaat en dat de Id > 0
             //Maak een GroceryListItem met Id 0 en vul de juiste productid en grocerylistid
             //Voeg het GroceryListItem toe aan de dataset middels de _groceryListItemsService

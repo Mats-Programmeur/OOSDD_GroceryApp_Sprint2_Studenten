@@ -1,14 +1,14 @@
 ﻿
-namespace Grocery.Core.Models
-{
-    public partial class Client : Model
+    namespace Grocery.Core.Models
     {
-        private string _emailAddress;
-        private string _password { get; set; }
-        public Client(int id, string name, string emailAddress, string password) : base(id, name)
+        public partial class Client : Model
         {
-            _emailAddress=emailAddress;
-            _password=password;
+            public string EmailAddress { get; set; }
+            public string Password { get; set; }
+            public Client(int id, string name, string emailAddress, string password) : base(id, name)
+            {
+                EmailAddress=emailAddress;
+                Password=password;
+            }
         }
     }
-}
